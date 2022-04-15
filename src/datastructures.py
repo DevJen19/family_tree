@@ -9,11 +9,31 @@ update this file to implement the following already declared methods:
 from random import randint
 
 class FamilyStructure:
-    def __init__(self, last_name):
+    def __init__(self, last_name, miembros):
         self.last_name = last_name
 
         # example list of members
-        self._members = []
+        self._members = miembros
+        #     {
+        #     "id":self._generateId(),
+        #     "first_name":"John",
+        #     "last_name":last_name,
+        #     "age":33,
+        #     "lucky_numbers":[7,13,22]
+        # },{
+        #     "id":self._generateId(),
+        #     "first_name":"Jane",
+        #     "last_name":last_name,
+        #     "age":35,
+        #     "lucky_numbers":[10,14,3]
+        # },{
+        #     "id":self._generateId(),
+        #     "first_name":"Jimmy",
+        #     "last_name":last_name,
+        #     "age":5,
+        #     "lucky_numbers":[1]
+        # }
+        
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
@@ -21,15 +41,26 @@ class FamilyStructure:
 
     def add_member(self, member):
         # fill this method and update the return
-        pass
+        self.member = {
+            "id": self._generateId(),
+            "first_name": self.first_name,
+            "last:name":last_name,
+            "age":self.age,
+            "lucky_numbers":self.lucky_numbers
+        }
+        return member
 
     def delete_member(self, id):
         # fill this method and update the return
-        pass
+        self._members = list(filter(lambda x: x['id']!=id, self._members))
+        return 
 
     def get_member(self, id):
         # fill this method and update the return
-        pass
+        filter_member = list(filter(lambda x: id==x['id'], self._members))
+        if len(filter_member) == 1:
+            return filter_member[0]
+        return None
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
